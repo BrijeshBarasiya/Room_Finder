@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RoomFinder">
         <activity
-            android:name="com.uipractice.roomfinder.MainActivity"
+            android:name=".authentication.LoginScreen"
+            android:exported="false" />
+        <activity
+            android:name=".Splash"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
