@@ -1,18 +1,13 @@
 package com.uipractice.roomfinder.authentication
 
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.util.Patterns
 import android.view.View.OnFocusChangeListener
-import android.view.WindowInsets
-import android.view.WindowManager
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.uipractice.roomfinder.DescriptionActivity
 import com.uipractice.roomfinder.R
 import com.uipractice.roomfinder.databinding.AuthenticationLoginScreenBinding
-
 
 class LoginActivity : AppCompatActivity() {
 
@@ -24,9 +19,6 @@ class LoginActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
         supportActionBar?.hide()
-        window.setFlags(
-            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
 
         binding.edtEmail.onFocusChangeListener = OnFocusChangeListener { _, hasFocus ->
             if (!hasFocus) {
@@ -40,6 +32,12 @@ class LoginActivity : AppCompatActivity() {
 
         binding.btnSignIn.setOnClickListener{
             Intent(this, DescriptionActivity::class.java).apply {
+                startActivity(this)
+            }
+        }
+
+        binding.lblNewMember.setOnClickListener {
+            Intent(this, SignUpActivity::class.java).apply {
                 startActivity(this)
             }
         }

@@ -8,6 +8,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+<!--        <item name="android:windowTranslucentStatus">true</item>-->
     </style>
 
     <!-- Headings -->
@@ -48,7 +49,7 @@
     </style>
 
     <!-- Button -->
-    <style name="PrimaryButton" parent="Widget.AppCompat.Button">
+    <style name="PrimaryButton" parent="Widget.AppCompat.TextView">
         <item name="backgroundTint">@color/primary_color</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">@dimen/_12ssp</item>

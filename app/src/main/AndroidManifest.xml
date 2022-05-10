@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RoomFinder">
         <activity
+            android:name=".authentication.SignUpActivity"
+            android:exported="false" />
+        <activity
             android:name=".DescriptionActivity"
             android:exported="false" />
         <activity

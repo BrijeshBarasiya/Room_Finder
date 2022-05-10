@@ -16,4 +16,8 @@
     <string name="continue_with_facebook">Continue with Facebook</string>
     <string name="new_member_sign_up_here">New Member? Sign up Here</string>
     <string name="continue_with_google">Continue withGoogle</string>
+    <string name="create_an_account">Create an Account</string>
+    <string name="full_name">Full name</string>
+    <string name="create_account">Create Account</string>
+    <string name="have_an_account_sign_in_here">Have an account? Sign In Here</string>
 </resources>

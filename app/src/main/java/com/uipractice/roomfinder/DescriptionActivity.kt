@@ -1,7 +1,6 @@
 package com.uipractice.roomfinder
 
 import android.os.Bundle
-import android.view.View
 import android.view.WindowManager
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
