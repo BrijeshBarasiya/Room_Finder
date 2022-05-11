@@ -1,14 +1,14 @@
 package com.uipractice.roomfinder
 
-import android.os.Build
 import android.os.Bundle
+import android.view.View
 import android.view.WindowManager
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import com.uipractice.roomfinder.databinding.DescriptionScreenBinding
 
-class DescriptionScreen : AppCompatActivity() {
+class DescriptionActivity : AppCompatActivity() {
 
     // Variable
     private lateinit var binding: DescriptionScreenBinding
@@ -43,7 +43,7 @@ class DescriptionScreen : AppCompatActivity() {
             lblPropertyBy.text = propertyDescription.propertyOwned
             lblDescriptionText.text = propertyDescription.description
             val adapter = FacilitiesAdapter(propertyDescription.facilities)
-            recyclerFacilities.layoutManager = GridLayoutManager(this@DescriptionScreen, 2, GridLayoutManager.VERTICAL, false)
+            recyclerFacilities.layoutManager = GridLayoutManager(this@DescriptionActivity, 2, GridLayoutManager.VERTICAL, false)
             recyclerFacilities.adapter = adapter
             val imageViews = listOf<ImageView>(binding.galleryImage1, binding.galleryImage2, binding.galleryImage3, binding.galleryImage4)
             for (image in 0 until propertyDescription.imageList.size) {
