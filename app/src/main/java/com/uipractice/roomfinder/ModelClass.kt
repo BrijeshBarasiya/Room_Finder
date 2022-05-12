@@ -1,5 +1,7 @@
 package com.uipractice.roomfinder
 
+import androidx.annotation.DrawableRes
+
 data class PropertyDescription(
     val propertyName: String,
     val propertyPrice: String,
@@ -52,4 +54,20 @@ val citiesAndProperties = listOf(
     CitiesAndProperties("Lainchaur", 10),
     CitiesAndProperties("Lalitpur", 10),
     CitiesAndProperties("Lainchaur", 10)
+)
+
+data class SettingsModelClass(
+    @DrawableRes val icon: Int,
+    val settingName: String,
+    val settingDescription: String,
+    var isExpanded: Boolean = false
+)
+
+val settingsModelClass = mutableListOf(
+    SettingsModelClass(R.drawable.ic_edit_profile, "Edit Profile", "Edit all the basic profile information associated with your profile"),
+    SettingsModelClass(R.drawable.ic_notification, "Notifications", "Edit all the basic profile information associated with your profile"),
+    SettingsModelClass(R.drawable.ic_recent_viewed, "Recent Viewed", "Edit all the basic profile information associated with your profile"),
+    SettingsModelClass(R.drawable.ic_get_help, "Get Help", "Edit all the basic profile information associated with your profile"),
+    SettingsModelClass(R.drawable.ic_about_us, "About us", "Edit all the basic profile information associated with your profile"),
+    SettingsModelClass(R.drawable.ic_logout, "Sign Out", "Edit all the basic profile information associated with your profile")
 )

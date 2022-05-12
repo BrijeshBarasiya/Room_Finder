@@ -1,23 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout>
 
-    <TextView
-        android:id="@+id/app_name"
-        style="@style/Heading1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/app_name"
-        android:textColor="@color/white" />
+    <data>
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/app_slogan"
-        style="@style/B1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/app_slogan"
-        android:textColor="@color/white" />
+        <variable
+            name="titleText"
+            type="String" />
 
-</merge>
+        <variable
+            name="sloganText"
+            type="String" />
+    </data>
+
+    <merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <TextView
+            android:id="@+id/app_name"
+            style="@style/Heading1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{titleText ?? @string/app_name}"
+            android:textColor="@color/white" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/app_slogan"
+            style="@style/B1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{sloganText ?? @string/app_slogan}"
+            android:textColor="@color/white" />
+
+    </merge>
+
+</layout>
