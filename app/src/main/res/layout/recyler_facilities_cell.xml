@@ -2,15 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:layout_constraintWidth_percent="0.5">
+    android:layout_height="wrap_content">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/image_right"
         android:layout_width="@dimen/_12sdp"
         android:layout_height="@dimen/_12sdp"
         android:background="@drawable/radius"
-        android:src="@drawable/check"
+        android:src="@drawable/ic_check"
         android:padding="@dimen/_2ssp"
         app:layout_constraintBottom_toBottomOf="@id/lbl_facility"
         app:layout_constraintStart_toStartOf="parent"

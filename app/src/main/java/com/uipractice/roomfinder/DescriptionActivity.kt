@@ -1,13 +1,16 @@
 package com.uipractice.roomfinder
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.view.WindowManager
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import com.uipractice.roomfinder.databinding.DescriptionScreenBinding
 
-class DescriptionActivity : AppCompatActivity() {
+class DescriptionActivity : AppCompatActivity(), View.OnClickListener {
 
     // Variable
     private lateinit var binding: DescriptionScreenBinding
@@ -19,6 +22,7 @@ class DescriptionActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
         supportActionBar?.hide()
+        binding.onClicked = this
         loadData()
         window.setFlags(
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
@@ -54,6 +58,18 @@ class DescriptionActivity : AppCompatActivity() {
                     break
                 }
             }
+        }
+    }
+
+    override fun onClick(view: View) {
+        when(view.id)  {
+            binding.btnBookNow.id -> {
+                Intent(this, SearchActivity::class.java).apply {
+                    startActivity(this)
+                }
+            }
+            binding.btnEmail.id -> Toast.makeText(this, resources.getString(R.string.message), Toast.LENGTH_SHORT).show()
+            binding.btnPhone.id -> Toast.makeText(this, resources.getString(R.string.phone), Toast.LENGTH_SHORT).show()
         }
     }
 
