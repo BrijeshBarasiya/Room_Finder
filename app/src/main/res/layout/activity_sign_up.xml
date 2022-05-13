@@ -15,6 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:overScrollMode="never"
+        android:scrollbars="none"
         tools:context=".authentication.SignUpActivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -200,24 +201,19 @@
                 app:layout_constraintTop_toBottomOf="@id/btn_facebook_login" />
 
             <TextView
-                android:id="@+id/lbl_signin"
+                android:id="@+id/lbl_sign_in"
                 style="@style/B1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10ssp"
                 android:layout_marginBottom="@dimen/_20ssp"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?android:attr/selectableItemBackground"
                 android:gravity="center"
-                android:onClick="@{onClicked.onClick}"
                 android:text="@string/have_an_account_sign_in_here"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/btn_google_login"
-                tools:targetApi="m" />
+                app:layout_constraintTop_toBottomOf="@id/btn_google_login" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

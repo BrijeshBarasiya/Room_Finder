@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="onClicked"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="sloganText"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".HomeActivity">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="@drawable/bottom_radius"
+                    android:backgroundTint="@color/primary_color"
+                    app:layout_constraintDimensionRatio="1:0.55"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/imageLogo"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:gravity="bottom|center"
+                    android:orientation="vertical"
+                    app:layout_constraintDimensionRatio="1:0.35"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <include
+                        layout="@layout/layout_logo"
+                        app:sloganText="@{sloganText}" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/details_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_30ssp"
+                    android:layout_marginTop="@dimen/_20ssp"
+                    android:outlineSpotShadowColor="@color/black"
+                    app:cardCornerRadius="@dimen/_15ssp"
+                    app:layout_constraintTop_toBottomOf="@id/imageLogo"
+                    tools:targetApi="p">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/lbl_screen_title"
+                            style="@style/Heading4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_25ssp"
+                            android:layout_marginTop="@dimen/_15ssp"
+                            android:text="@string/find_a_property_anywhere"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/edt_city"
+                            style="@style/B1"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_30sdp"
+                            android:layout_marginHorizontal="@dimen/_25ssp"
+                            android:layout_marginTop="@dimen/_12ssp"
+                            android:background="@drawable/secondary_edittext"
+                            android:drawableStart="@drawable/ic_location"
+                            android:drawablePadding="@dimen/_10ssp"
+                            android:drawableTint="@color/primary_color"
+                            android:hint="@string/enter_an_address_or_city"
+                            android:inputType="text"
+                            android:minHeight="40dp"
+                            android:padding="@dimen/_8ssp"
+                            app:layout_constraintTop_toBottomOf="@id/lbl_screen_title" />
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btn_search"
+                            style="@style/PrimaryButton"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_40sdp"
+                            android:layout_marginTop="@dimen/_10ssp"
+                            android:layout_marginBottom="@dimen/_15ssp"
+                            android:onClick="@{onClicked.onClick}"
+                            android:text="@string/search_now"
+                            app:layout_constraintEnd_toEndOf="@id/edt_city"
+                            app:layout_constraintStart_toStartOf="@id/edt_city"
+                            app:layout_constraintTop_toBottomOf="@id/edt_city" />
+
+                        <TextView
+                            style="@style/B1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5ssp"
+                            android:layout_marginBottom="@dimen/_15ssp"
+                            android:text="@string/advanced_search"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="@id/edt_city"
+                            app:layout_constraintTop_toBottomOf="@id/btn_search" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyler_menus"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35sdp"
+                    android:paddingHorizontal="@dimen/_20sdp"
+                    android:clipToPadding="false"
+                    android:layout_marginTop="@dimen/_15ssp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintTop_toBottomOf="@id/details_layout" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/lbl_title_properties"
+                    style="@style/Heading4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_20ssp"
+                    android:layout_marginTop="@dimen/_15ssp"
+                    android:text="@string/recently_added_properties"
+                    app:layout_constraintEnd_toStartOf="@id/lbl_properties_view_all"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/recyler_menus" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/lbl_properties_view_all"
+                    style="@style/B2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_20ssp"
+                    android:text="@string/view_all"
+                    app:layout_constraintBottom_toBottomOf="@id/lbl_title_properties"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/lbl_title_properties" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_properties"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15ssp"
+                    android:overScrollMode="never"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="@id/lbl_properties_view_all"
+                    app:layout_constraintStart_toStartOf="@id/lbl_title_properties"
+                    app:layout_constraintTop_toBottomOf="@id/lbl_title_properties" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/lbl_title_locations"
+                    style="@style/Heading4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_20ssp"
+                    android:layout_marginTop="@dimen/_15ssp"
+                    android:text="@string/locations"
+                    app:layout_constraintEnd_toStartOf="@id/lbl_updates_view_all"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/recycler_properties" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/lbl_locations_view_all"
+                    style="@style/B2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_20ssp"
+                    android:text="@string/view_all"
+                    app:layout_constraintBottom_toBottomOf="@id/lbl_title_locations"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/lbl_title_locations" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_locations"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15ssp"
+                    app:layout_constraintEnd_toEndOf="@id/lbl_locations_view_all"
+                    app:layout_constraintStart_toStartOf="@id/lbl_title_locations"
+                    app:layout_constraintTop_toBottomOf="@id/lbl_title_locations" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/lbl_title_updates"
+                    style="@style/Heading4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_20ssp"
+                    android:layout_marginTop="@dimen/_15ssp"
+                    android:text="@string/recent_updates"
+                    app:layout_constraintEnd_toStartOf="@id/lbl_updates_view_all"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/recycler_locations" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/lbl_updates_view_all"
+                    style="@style/B2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_20ssp"
+                    android:text="@string/view_all"
+                    app:layout_constraintBottom_toBottomOf="@id/lbl_title_updates"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/lbl_title_updates" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_updates"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15ssp"
+                    android:layout_marginBottom="@dimen/_5ssp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/lbl_locations_view_all"
+                    app:layout_constraintStart_toStartOf="@id/lbl_title_updates"
+                    app:layout_constraintTop_toBottomOf="@id/lbl_title_updates" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:menu="@menu/menu_bottom_navigation" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

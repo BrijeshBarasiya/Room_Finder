@@ -17,144 +17,156 @@
         android:layout_height="match_parent"
         tools:context=".SearchActivity">
 
-        <View
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="@drawable/bottom_radius"
-            android:backgroundTint="@color/primary_color"
-            app:layout_constraintDimensionRatio="1:.5"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/imageLogo"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:gravity="bottom|center"
-            android:orientation="vertical"
-            app:layout_constraintDimensionRatio="1:0.25"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <include layout="@layout/layout_logo" />
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/details_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_30ssp"
-            android:layout_marginTop="@dimen/_30ssp"
-            android:outlineSpotShadowColor="@color/black"
-            app:cardCornerRadius="@dimen/_15ssp"
-            app:layout_constraintTop_toBottomOf="@id/imageLogo"
-            tools:targetApi="p">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/bottom_navigation">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/lbl_screen_title"
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="@drawable/bottom_radius"
+                    android:backgroundTint="@color/primary_color"
+                    app:layout_constraintDimensionRatio="1:.5"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/imageLogo"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:gravity="bottom|center"
+                    android:orientation="vertical"
+                    app:layout_constraintDimensionRatio="1:0.25"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <include layout="@layout/layout_logo" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/details_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_30ssp"
+                    android:layout_marginTop="@dimen/_30ssp"
+                    android:outlineSpotShadowColor="@color/black"
+                    app:cardCornerRadius="@dimen/_15ssp"
+                    app:layout_constraintTop_toBottomOf="@id/imageLogo"
+                    tools:targetApi="p">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/lbl_screen_title"
+                            style="@style/Heading4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_25ssp"
+                            android:layout_marginTop="@dimen/_15ssp"
+                            android:text="@string/advanced_search"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/edt_city"
+                            style="@style/B1"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_30sdp"
+                            android:layout_marginHorizontal="@dimen/_25ssp"
+                            android:layout_marginTop="@dimen/_12ssp"
+                            android:inputType="text"
+                            android:background="@drawable/secondary_edittext"
+                            android:drawableStart="@drawable/ic_location"
+                            android:drawablePadding="@dimen/_10ssp"
+                            android:drawableTint="@color/primary_color"
+                            android:hint="@string/enter_an_address_or_city"
+                            android:minHeight="40dp"
+                            android:padding="@dimen/_8ssp"
+                            app:layout_constraintTop_toBottomOf="@id/lbl_screen_title" />
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/edt_price_range"
+                            style="@style/B1"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_30sdp"
+                            android:layout_marginTop="@dimen/_5ssp"
+                            android:background="@drawable/secondary_edittext"
+                            android:drawableStart="@drawable/ic_money"
+                            android:drawablePadding="@dimen/_10ssp"
+                            android:inputType="number"
+                            android:drawableTint="@color/primary_color"
+                            android:hint="@string/enter_price_range"
+                            android:minHeight="40dp"
+                            android:padding="@dimen/_8ssp"
+                            app:layout_constraintEnd_toEndOf="@id/edt_city"
+                            app:layout_constraintStart_toStartOf="@id/edt_city"
+                            app:layout_constraintTop_toBottomOf="@id/edt_city" />
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/edt_resident_type"
+                            style="@style/B1"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_30sdp"
+                            android:layout_marginTop="@dimen/_5ssp"
+                            android:background="@drawable/secondary_edittext"
+                            android:drawableStart="@drawable/ic_resident_type"
+                            android:drawablePadding="@dimen/_6ssp"
+                            android:drawableTint="@color/primary_color"
+                            android:hint="@string/resident_type"
+                            android:minHeight="40dp"
+                            android:inputType="text"
+                            android:imeOptions="actionDone"
+                            android:padding="@dimen/_5ssp"
+                            app:layout_constraintEnd_toEndOf="@id/edt_city"
+                            app:layout_constraintStart_toStartOf="@id/edt_city"
+                            app:layout_constraintTop_toBottomOf="@id/edt_price_range" />
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btn_search"
+                            style="@style/PrimaryButton"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_40sdp"
+                            android:layout_marginTop="@dimen/_10ssp"
+                            android:layout_marginBottom="@dimen/_15ssp"
+                            android:text="@string/search_now"
+                            android:onClick="@{onClicked.onClick}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="@id/edt_resident_type"
+                            app:layout_constraintStart_toStartOf="@id/edt_resident_type"
+                            app:layout_constraintTop_toBottomOf="@id/edt_resident_type" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/lbl_title_location"
                     style="@style/Heading4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/_25ssp"
-                    android:layout_marginTop="@dimen/_15ssp"
-                    android:text="@string/advanced_search"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_marginHorizontal="@dimen/_30ssp"
+                    android:layout_marginTop="@dimen/_25ssp"
+                    android:text="@string/locations"
+                    app:layout_constraintTop_toBottomOf="@id/details_layout" />
 
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/edt_city"
-                    style="@style/B1"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_30sdp"
-                    android:layout_marginHorizontal="@dimen/_25ssp"
-                    android:layout_marginTop="@dimen/_12ssp"
-                    android:inputType="text"
-                    android:background="@drawable/secondary_edittext"
-                    android:drawableStart="@drawable/ic_location"
-                    android:drawablePadding="@dimen/_10ssp"
-                    android:drawableTint="@color/primary_color"
-                    android:hint="@string/enter_an_address_or_city"
-                    android:minHeight="40dp"
-                    android:padding="@dimen/_8ssp"
-                    app:layout_constraintTop_toBottomOf="@id/lbl_screen_title" />
-
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/edt_price_range"
-                    style="@style/B1"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyler_locations"
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/_30sdp"
-                    android:layout_marginTop="@dimen/_5ssp"
-                    android:background="@drawable/secondary_edittext"
-                    android:drawableStart="@drawable/ic_location"
-                    android:drawablePadding="@dimen/_10ssp"
-                    android:inputType="number"
-                    android:drawableTint="@color/primary_color"
-                    android:hint="@string/enter_price_range"
-                    android:minHeight="40dp"
-                    android:padding="@dimen/_8ssp"
-                    app:layout_constraintEnd_toEndOf="@id/edt_city"
-                    app:layout_constraintStart_toStartOf="@id/edt_city"
-                    app:layout_constraintTop_toBottomOf="@id/edt_city" />
-
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/edt_resident_type"
-                    style="@style/B1"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/_30sdp"
-                    android:layout_marginTop="@dimen/_5ssp"
-                    android:background="@drawable/secondary_edittext"
-                    android:drawableStart="@drawable/ic_location"
-                    android:drawablePadding="@dimen/_10ssp"
-                    android:drawableTint="@color/primary_color"
-                    android:hint="@string/resident_type"
-                    android:minHeight="40dp"
-                    android:inputType="text"
-                    android:imeOptions="actionDone"
-                    android:padding="@dimen/_8ssp"
-                    app:layout_constraintEnd_toEndOf="@id/edt_city"
-                    app:layout_constraintStart_toStartOf="@id/edt_city"
-                    app:layout_constraintTop_toBottomOf="@id/edt_price_range" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_search"
-                    style="@style/PrimaryButton"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/_40sdp"
-                    android:layout_marginTop="@dimen/_10ssp"
-                    android:layout_marginBottom="@dimen/_15ssp"
-                    android:text="@string/search_now"
-                    android:onClick="@{onClicked.onClick}"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@id/edt_resident_type"
-                    app:layout_constraintStart_toStartOf="@id/edt_resident_type"
-                    app:layout_constraintTop_toBottomOf="@id/edt_resident_type" />
+                    android:layout_height="wrap_content"
+                    android:overScrollMode="never"
+                    app:layout_constraintEnd_toEndOf="@id/lbl_title_location"
+                    app:layout_constraintStart_toStartOf="@id/lbl_title_location"
+                    app:layout_constraintTop_toBottomOf="@id/lbl_title_location" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </androidx.cardview.widget.CardView>
-
-        <TextView
-            android:id="@+id/lbl_title_location"
-            style="@style/Heading4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_30ssp"
-            android:layout_marginTop="@dimen/_25ssp"
-            android:text="@string/locations"
-            app:layout_constraintTop_toBottomOf="@id/details_layout" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyler_locations"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:clipToPadding="false"
-            android:paddingBottom="@dimen/_50ssp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/lbl_title_location"
-            app:layout_constraintStart_toStartOf="@id/lbl_title_location"
-            app:layout_constraintTop_toBottomOf="@id/lbl_title_location" />
+        </androidx.core.widget.NestedScrollView>
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_navigation"

@@ -6,7 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.uipractice.roomfinder.databinding.RecyclerLocationsBinding
 
 class LocationsAdapter(
-    private val elements: List<CitiesAndProperties>
+    private val elements: List<CitiesAndProperties>,
+    private val elementCount: Int = elements.size,
 ): RecyclerView.Adapter<LocationsAdapter.LocationsViewHolder>() {
 
     inner class LocationsViewHolder(val binding: RecyclerLocationsBinding): RecyclerView.ViewHolder(binding.root)
@@ -26,7 +27,7 @@ class LocationsAdapter(
     }
 
     override fun getItemCount(): Int {
-        return elements.size
+        return elementCount
     }
 
 }

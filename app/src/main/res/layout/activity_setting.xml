@@ -76,15 +76,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="@color/white"
-                android:padding="@dimen/_5ssp"
-                android:scaleType="centerCrop"
+                android:scaleType="center"
+                android:adjustViewBounds="true"
+                android:outlineSpotShadowColor="@color/black"
                 android:src="@drawable/ic_plus"
-                android:tint="@color/primary_color" />
+                android:tint="@color/primary_color"
+                tools:targetApi="p" />
         </androidx.cardview.widget.CardView>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/user_name"
             style="@style/Heading3"
+            android:textColor="@color/black"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_10ssp"

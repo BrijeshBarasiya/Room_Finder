@@ -1,12 +1,16 @@
 package com.uipractice.roomfinder.authentication
 
-import android.content.Intent
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.TextUtils
+import android.text.method.LinkMovementMethod
 import android.util.Patterns
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.uipractice.roomfinder.R
+import com.uipractice.roomfinder.boldSpan
+import com.uipractice.roomfinder.clickableForegroundColorSpan
+import com.uipractice.roomfinder.createToast
 import com.uipractice.roomfinder.databinding.ActivitySignUpBinding
 
 class SignUpActivity : AppCompatActivity(), View.OnClickListener {
@@ -20,6 +24,7 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        loadData()
         binding.onClicked = this
         supportActionBar?.hide()
         binding.edtEmail.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
@@ -31,16 +36,25 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+    private fun loadData() {
+        val signUpText = SpannableString(resources.getString(R.string.sign_in_here)).apply {
+            clickableForegroundColorSpan("#2C56C0", this@SignUpActivity, LoginActivity::class.java)
+            boldSpan()
+        }
+        binding.lblSignIn.text = SpannableString(
+            TextUtils.concat(
+            binding.lblSignIn.text.toString(),
+            " ",
+            signUpText
+        ))
+        binding.lblSignIn.movementMethod = LinkMovementMethod.getInstance()
+    }
+
     override fun onClick(view: View) {
         when(view.id) {
-            binding.lblSignin.id -> {
-                Intent(this, LoginActivity::class.java).apply {
-                    startActivity(this)
-                }
-            }
-            binding.btnCreateAccount.id -> Toast.makeText(this, resources.getString(R.string.create_account), Toast.LENGTH_SHORT).show()
-            binding.btnGoogleLogin.id -> Toast.makeText(this, resources.getString(R.string.continue_with_google), Toast.LENGTH_SHORT).show()
-            binding.btnFacebookLogin.id -> Toast.makeText(this, resources.getString(R.string.continue_with_facebook), Toast.LENGTH_SHORT).show()
+            binding.btnCreateAccount.id -> resources.getString(R.string.create_account).createToast(this)
+            binding.btnGoogleLogin.id -> resources.getString(R.string.continue_with_google).createToast(this)
+            binding.btnFacebookLogin.id -> resources.getString(R.string.continue_with_facebook).createToast(this)
         }
     }
 

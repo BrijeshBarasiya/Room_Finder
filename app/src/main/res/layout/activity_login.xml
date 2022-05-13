@@ -14,6 +14,8 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:overScrollMode="never"
+        android:scrollbars="none"
         tools:context=".authentication.LoginActivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -84,17 +86,28 @@
 
                     </com.google.android.material.textfield.TextInputLayout>
 
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/lbl_email_error"
+                        style="@style/B2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/email_did_t_match"
+                        android:textColor="@color/red"
+                        android:visibility="invisible"
+                        app:layout_constraintStart_toStartOf="@id/til_email"
+                        app:layout_constraintTop_toBottomOf="@id/til_email" />
+
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/til_password"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_10ssp"
+                        android:layout_marginTop="@dimen/_5ssp"
                         android:hint="@string/password"
                         app:endIconMode="password_toggle"
                         app:layout_constraintEnd_toEndOf="@id/til_email"
                         app:layout_constraintStart_toStartOf="@id/til_email"
-                        app:layout_constraintTop_toBottomOf="@id/til_email">
+                        app:layout_constraintTop_toBottomOf="@id/lbl_email_error">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/edt_password"
@@ -175,13 +188,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_20ssp"
                 android:layout_marginBottom="@dimen/_10ssp"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?android:attr/selectableItemBackground"
                 android:gravity="center"
-                android:onClick="@{onClicked.onClick}"
                 android:text="@string/new_member_sign_up_here"
-                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

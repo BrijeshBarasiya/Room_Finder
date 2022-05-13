@@ -4,8 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import com.uipractice.roomfinder.databinding.ActivityDescriptionBinding
 
@@ -23,6 +23,7 @@ class DescriptionActivity : AppCompatActivity(), View.OnClickListener {
         supportActionBar?.hide()
         binding.onClicked = this
         loadData()
+//        window.statusBarColor = ContextCompat.getColor(this, R.color.s)
 //        window.setFlags(
 //            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
 //            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
@@ -30,15 +31,24 @@ class DescriptionActivity : AppCompatActivity(), View.OnClickListener {
 
     // Function
     private fun loadData() {
+        loadUserData()
+        loadPropertyData()
+        loadRecyclerData()
+    }
+
+    private fun loadUserData() {
         with(binding) {
             customToolbar.title = propertyDescription.propertyName
-//            lblPropertyName.text = propertyDescription.propertyName
             val price = "Rs. ${propertyDescription.propertyPrice} /"
             customToolbar.subtitle = price
-//            lblPropertyPrice.text = price
             userProfile.setImageResource(R.drawable.profile_photo)
             userName.text = propertyDescription.userName
             userLocation.text = propertyDescription.userLocation
+        }
+    }
+
+    private fun loadPropertyData() {
+        with(binding) {
             lblPropertyAddress.text = propertyDescription.propertyAddress
             lblPropertyArea.text = propertyDescription.propertyArea
             val applied ="${propertyDescription.propertyApplied} Applied | ${propertyDescription.propertyView} Views"
@@ -46,9 +56,13 @@ class DescriptionActivity : AppCompatActivity(), View.OnClickListener {
             lblIsAvailable.text = propertyDescription.isAvailable
             lblPropertyBy.text = propertyDescription.propertyOwned
             lblDescriptionText.text = propertyDescription.description
-            val adapter = FacilitiesAdapter(propertyDescription.facilities)
+        }
+    }
+
+    private fun loadRecyclerData() {
+        with(binding) {
             recyclerFacilities.layoutManager = GridLayoutManager(this@DescriptionActivity, 2, GridLayoutManager.VERTICAL, false)
-            recyclerFacilities.adapter = adapter
+            recyclerFacilities.adapter = FacilitiesAdapter(propertyDescription.facilities)
             val imageViews = listOf<ImageView>(binding.galleryImage1, binding.galleryImage2, binding.galleryImage3, binding.galleryImage4)
             for (image in 0 until propertyDescription.imageList.size) {
                 if (image != 4) {
@@ -69,8 +83,8 @@ class DescriptionActivity : AppCompatActivity(), View.OnClickListener {
                     startActivity(this)
                 }
             }
-            binding.btnEmail.id -> Toast.makeText(this, resources.getString(R.string.message), Toast.LENGTH_SHORT).show()
-            binding.btnPhone.id -> Toast.makeText(this, resources.getString(R.string.phone), Toast.LENGTH_SHORT).show()
+            binding.btnEmail.id -> resources.getString(R.string.message).createToast(this)
+            binding.btnPhone.id -> resources.getString(R.string.phone).createToast(this)
         }
     }
 

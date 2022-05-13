@@ -40,6 +40,81 @@ val propertyDescription = PropertyDescription(
     mutableListOf("1 Big Hall", "Shared Toilet", "Bikes and Car Parking", "24/7 Water facility")
 )
 
+val propertyDescriptions = listOf(
+    PropertyDescription(
+        "1 Big Hall at Lalitpur",
+        "8000",
+        "NULL",
+        "Courtney Henry",
+        "Landlord",
+        9885452545,
+        "abc@gmail.com",
+        "1.2 km from Gwarko",
+        "Mahalaxmi, Lalitpur",
+        0,
+        19,
+        "Available",
+        "Property Owned By: Alok",
+        mutableListOf("NULL", "NULL", "NULL", "NULL", "NULL"),
+        "1 big hall room for rent at lalitpur, ktm with the facilities of bike parking and tap water . it offers 1 bedroom,and a 1 common bathroom for whole flat.  It is suitable for student only. Price is negotiable for student only. ",
+        mutableListOf("1 Big Hall", "Shared Toilet", "Bikes and Car Parking", "24/7 Water facility")
+    ),
+    PropertyDescription(
+        "1 Big Hall at Lalitpur",
+        "8000",
+        "NULL",
+        "Courtney Henry",
+        "Landlord",
+        9885452545,
+        "abc@gmail.com",
+        "1.2 km from Gwarko",
+        "Mahalaxmi, Lalitpur",
+        0,
+        19,
+        "Available",
+        "Property Owned By: Alok",
+        mutableListOf("NULL", "NULL", "NULL", "NULL", "NULL"),
+        "1 big hall room for rent at lalitpur, ktm with the facilities of bike parking and tap water . it offers 1 bedroom,and a 1 common bathroom for whole flat.  It is suitable for student only. Price is negotiable for student only. ",
+        mutableListOf("1 Big Hall", "Shared Toilet", "Bikes and Car Parking", "24/7 Water facility")
+    ),
+    PropertyDescription(
+        "1 Big Hall at Lalitpur",
+        "8000",
+        "NULL",
+        "Courtney Henry",
+        "Landlord",
+        9885452545,
+        "abc@gmail.com",
+        "1.2 km from Gwarko",
+        "Mahalaxmi, Lalitpur",
+        0,
+        19,
+        "Available",
+        "Property Owned By: Alok",
+        mutableListOf("NULL", "NULL", "NULL", "NULL", "NULL"),
+        "1 big hall room for rent at lalitpur, ktm with the facilities of bike parking and tap water . it offers 1 bedroom,and a 1 common bathroom for whole flat.  It is suitable for student only. Price is negotiable for student only. ",
+        mutableListOf("1 Big Hall", "Shared Toilet", "Bikes and Car Parking", "24/7 Water facility")
+    ),
+    PropertyDescription(
+        "1 Big Hall at Lalitpur",
+        "8000",
+        "NULL",
+        "Courtney Henry",
+        "Landlord",
+        9885452545,
+        "abc@gmail.com",
+        "1.2 km from Gwarko",
+        "Mahalaxmi, Lalitpur",
+        0,
+        19,
+        "Available",
+        "Property Owned By: Alok",
+        mutableListOf("NULL", "NULL", "NULL", "NULL", "NULL"),
+        "1 big hall room for rent at lalitpur, ktm with the facilities of bike parking and tap water . it offers 1 bedroom,and a 1 common bathroom for whole flat.  It is suitable for student only. Price is negotiable for student only. ",
+        mutableListOf("1 Big Hall", "Shared Toilet", "Bikes and Car Parking", "24/7 Water facility")
+    )
+)
+
 data class CitiesAndProperties(
     val cityName: String,
     val totalProperties: Int

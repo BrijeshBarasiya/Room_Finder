@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RoomFinder">
         <activity
+            android:name=".HomeActivity"
+            android:exported="false" />
+        <activity
             android:name=".SettingActivity"
             android:exported="false" />
         <activity
@@ -17,12 +20,14 @@
             android:exported="false" />
         <activity
             android:name=".authentication.SignUpActivity"
+            android:windowSoftInputMode="adjustResize"
             android:exported="false" />
         <activity
             android:name=".DescriptionActivity"
             android:exported="false" />
         <activity
             android:name=".authentication.LoginActivity"
+            android:windowSoftInputMode="adjustResize"
             android:exported="false" />
         <activity
             android:name=".SplashActivity"
