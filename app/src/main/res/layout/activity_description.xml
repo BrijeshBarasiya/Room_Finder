@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
 
@@ -10,82 +10,57 @@
             type="android.view.View.OnClickListener" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/screen_profile"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".DescriptionActivity">
 
-        <ScrollView
-            android:id="@+id/scroll_details"
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/screen_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:overScrollMode="never"
-            android:scrollbars="none"
-            app:layout_constraintBottom_toTopOf="@id/btn_book_now"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/collapsing_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_300sdp"
+                app:contentScrim="@color/white"
+                app:expandedTitleMarginBottom="@dimen/_20ssp"
+                app:expandedTitleMarginStart="@dimen/_10ssp"
+                app:expandedTitleTextColor="@color/white"
+                app:expandedTitleTextAppearance="@color/white"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img_profile_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/image"
+                    app:layout_collapseMode="parallax" />
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/custom_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:layout_collapseMode="pin"
+                    app:titleTextColor="@color/white" />
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/top_card_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:background="@drawable/bottom_radius"
-                    app:cardCornerRadius="@dimen/_15ssp"
-                    app:layout_constraintDimensionRatio="1:0.9"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:backgroundTint="@color/black"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/image" />
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/lbl_property_name"
-                            style="@style/Heading1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="@dimen/_30ssp"
-                            android:text="@string/app_name"
-                            android:textColor="@color/white"
-                            app:layout_constraintBottom_toTopOf="@id/lbl_property_price" />
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/lbl_property_price"
-                            style="@style/Heading4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/_30ssp"
-                            android:text="@string/app_name"
-                            android:textColor="@color/white"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="@id/lbl_property_name" />
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/per_month"
-                            style="@style/B2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_2ssp"
-                            android:text="@string/per_month"
-                            android:textColor="@color/white"
-                            app:layout_constraintBottom_toBottomOf="@id/lbl_property_price"
-                            app:layout_constraintStart_toEndOf="@id/lbl_property_price"
-                            app:layout_constraintTop_toTopOf="@id/lbl_property_price" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                </androidx.cardview.widget.CardView>
+                android:layout_height="match_parent">
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/eight_percent"
@@ -112,7 +87,7 @@
                     android:layout_marginTop="@dimen/_23ssp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@id/user_profile"
-                    app:layout_constraintTop_toBottomOf="@id/top_card_view" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/user_location"
@@ -137,8 +112,8 @@
                     android:background="@drawable/radius"
                     android:backgroundTint="@color/primary_color"
                     android:onClick="@{onClicked.onClick}"
-                    android:scaleType="centerCrop"
                     android:padding="@dimen/_5ssp"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/ic_email_image"
                     app:layout_constraintBottom_toBottomOf="@id/user_location"
                     app:layout_constraintEnd_toEndOf="@id/right_eight_percent"
@@ -152,8 +127,8 @@
                     android:background="@drawable/radius"
                     android:backgroundTint="@color/primary_color"
                     android:onClick="@{onClicked.onClick}"
-                    android:scaleType="centerCrop"
                     android:padding="@dimen/_5ssp"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/ic_call_image"
                     app:layout_constraintBottom_toBottomOf="@id/btn_email"
                     app:layout_constraintEnd_toStartOf="@id/btn_email"
@@ -361,22 +336,23 @@
                     app:layout_constraintStart_toStartOf="@id/eight_percent"
                     app:layout_constraintTop_toBottomOf="@id/lbl_facilities" />
 
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_book_now"
+                    style="@style/PrimaryButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_marginHorizontal="@dimen/_30ssp"
+                    android:layout_marginTop="@dimen/_15ssp"
+                    android:layout_marginBottom="@dimen/_20ssp"
+                    android:onClick="@{onClicked.onClick}"
+                    android:text="@string/book_now"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/recycler_facilities" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </ScrollView>
+        </androidx.core.widget.NestedScrollView>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_book_now"
-            style="@style/PrimaryButton"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_marginHorizontal="@dimen/_30ssp"
-            android:layout_marginBottom="@dimen/_5ssp"
-            android:onClick="@{onClicked.onClick}"
-            android:text="@string/book_now"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/scroll_details" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </layout>

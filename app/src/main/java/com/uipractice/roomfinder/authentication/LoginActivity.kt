@@ -9,15 +9,15 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.uipractice.roomfinder.DescriptionActivity
 import com.uipractice.roomfinder.R
-import com.uipractice.roomfinder.databinding.AuthenticationLoginScreenBinding
+import com.uipractice.roomfinder.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
-    private lateinit var binding: AuthenticationLoginScreenBinding
+    private lateinit var binding: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = AuthenticationLoginScreenBinding.inflate(layoutInflater)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
         supportActionBar?.hide()
@@ -27,7 +27,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 if(Patterns.EMAIL_ADDRESS.matcher(binding.edtEmail.text.toString()).matches()) {
                     binding.edtEmail.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_verified, 0)
                 } else {
-                    binding.edtEmail.error = resources.getString(R.string.enter_valid_address)
+                    binding.edtEmail.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_error, 0)
                 }
             }
         }
