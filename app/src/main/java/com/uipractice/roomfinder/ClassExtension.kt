@@ -12,6 +12,8 @@ import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
 import android.view.View
+import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 
 fun SpannableString.clickableForegroundColorSpan(color: String, currentActivity: Activity, nextActivity: Class<*>): SpannableString {
@@ -36,4 +38,29 @@ fun SpannableString.boldSpan(): SpannableString {
 
 fun String.createToast(context: Context, length: Int = Toast.LENGTH_SHORT) {
     Toast.makeText(context, this, length).show()
+}
+
+fun EditText.isError(errorLabel: TextView): Boolean {
+    return if (this.text.toString().isEmpty()) {
+        errorLabel.visibility = View.VISIBLE
+        false
+    } else {
+        errorLabel.visibility = View.INVISIBLE
+        true
+    }
+}
+
+fun EditText.isValidPassword(errorLabel: TextView): Boolean {
+    return if (!this.isError(errorLabel)){
+        errorLabel.text = resources.getString(R.string.required)
+        false
+    } else if (this.text.toString().length < 8) {
+        errorLabel.visibility = View.VISIBLE
+        errorLabel.text = resources.getString(R.string.password_less_than_eight)
+        false
+    } else {
+        errorLabel.visibility = View.INVISIBLE
+        errorLabel.text = resources.getString(R.string.required)
+        true
+    }
 }

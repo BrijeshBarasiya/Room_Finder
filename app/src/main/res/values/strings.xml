@@ -13,7 +13,11 @@
     <string name="password">Password</string>
     <string name="enter_valid_address">Enter Valid Email Address</string>
     <string name="log_in">Log In</string>
+    <string name="password_does_not_match">Password Doesn\'t Match</string>
+    <string name="required">Required<sup>*</sup></string>
+    <string name="fill_all_required_details">Fill all Required Details</string>
     <string name="reset_password">Reset Password</string>
+    <string name="password_less_than_eight">Password is Less than Eight Character</string>
     <string name="or_sign_up_with">or Sign Up with</string>
     <string name="continue_with_facebook">Continue with Facebook</string>
     <string name="new_member_sign_up_here">New Member?</string>
@@ -39,4 +43,5 @@
     <string name="view_all">View All</string>
     <string name="recent_updates">Recent Updates</string>
     <string name="email_did_t_match">Enter Valid Email!</string>
+    <string name="confirm_password">Confirm Password</string>
 </resources>

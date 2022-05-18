@@ -82,40 +82,66 @@
                             android:id="@+id/edt_full_name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="text" />
+                            android:autofillHints="name"
+                            android:inputType="textCapWords"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        android:id="@+id/lbl_error_full_name"
+                        style="@style/B2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_2ssp"
+                        android:text="@string/required"
+                        android:textColor="@color/red"
+                        android:visibility="invisible"
+                        app:layout_constraintStart_toStartOf="@id/til_full_name"
+                        app:layout_constraintTop_toBottomOf="@id/til_full_name" />
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/til_email"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_10ssp"
+                        android:layout_marginTop="@dimen/_5ssp"
                         android:hint="@string/email_address"
                         app:layout_constraintEnd_toEndOf="@id/til_full_name"
                         app:layout_constraintStart_toStartOf="@id/til_full_name"
-                        app:layout_constraintTop_toBottomOf="@id/til_full_name">
+                        app:layout_constraintTop_toBottomOf="@id/lbl_error_full_name">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/edt_email"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="text" />
+                            android:inputType="textEmailAddress"
+                            android:autofillHints="emailAddress"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        android:id="@+id/lbl_error_email"
+                        style="@style/B2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_2ssp"
+                        android:text="@string/required"
+                        android:textColor="@color/red"
+                        android:visibility="invisible"
+                        app:layout_constraintStart_toStartOf="@id/til_email"
+                        app:layout_constraintTop_toBottomOf="@id/til_email" />
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/til_password"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_10ssp"
+                        android:layout_marginTop="@dimen/_5ssp"
                         android:hint="@string/password"
                         app:endIconMode="password_toggle"
                         app:layout_constraintEnd_toEndOf="@id/til_full_name"
                         app:layout_constraintStart_toStartOf="@id/til_full_name"
-                        app:layout_constraintTop_toBottomOf="@id/til_email">
+                        app:layout_constraintTop_toBottomOf="@id/lbl_error_email">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/edt_password"
@@ -125,17 +151,29 @@
 
                     </com.google.android.material.textfield.TextInputLayout>
 
+                    <TextView
+                        android:id="@+id/lbl_error_password"
+                        style="@style/B2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_2ssp"
+                        android:text="@string/required"
+                        android:textColor="@color/red"
+                        android:visibility="invisible"
+                        app:layout_constraintStart_toStartOf="@id/til_password"
+                        app:layout_constraintTop_toBottomOf="@id/til_password" />
+
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/til_confirm_password"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_10ssp"
-                        android:hint="@string/password"
+                        android:layout_marginTop="@dimen/_5ssp"
+                        android:hint="@string/confirm_password"
                         app:endIconMode="password_toggle"
                         app:layout_constraintEnd_toEndOf="@id/til_full_name"
                         app:layout_constraintStart_toStartOf="@id/til_full_name"
-                        app:layout_constraintTop_toBottomOf="@id/til_password">
+                        app:layout_constraintTop_toBottomOf="@id/lbl_error_password">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/edt_confirm_password"
@@ -179,7 +217,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_48sdp"
                 android:layout_marginHorizontal="@dimen/_50ssp"
-                android:layout_marginTop="@dimen/_15ssp"
+                android:layout_marginTop="@dimen/_10ssp"
                 android:drawableStart="@drawable/ic_facebook"
                 android:onClick="@{onClicked.onClick}"
                 android:paddingHorizontal="@dimen/_25ssp"
