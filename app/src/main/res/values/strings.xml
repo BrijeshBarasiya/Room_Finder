@@ -1,4 +1,35 @@
 <resources>
     <string name="app_name">Room Finder</string>
     <string name="app_slogan">Ultimate Property Finder</string>
+    <string name="book_now">Book Now</string>
+    <string name="per_month">per month</string>
+    <string name="view_on_google_maps">View on Google Maps</string>
+    <string name="facilities">Facilities</string>
+    <string name="description">Description</string>
+    <string name="email_address">Email Address</string>
+    <string name="message">Massage</string>
+    <string name="phone">Phone</string>
+    <string name="sign_in_to_continue">Sign In to Continue</string>
+    <string name="password">Password</string>
+    <string name="enter_valid_address">Enter Valid Email Address</string>
+    <string name="log_in">Log In</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="or_sign_up_with">or Sign Up with</string>
+    <string name="continue_with_facebook">Continue with Facebook</string>
+    <string name="new_member_sign_up_here">New Member? Sign up Here</string>
+    <string name="continue_with_google">Continue withGoogle</string>
+    <string name="create_an_account">Create an Account</string>
+    <string name="full_name">Full name</string>
+    <string name="create_account">Create Account</string>
+    <string name="have_an_account_sign_in_here">Have an account? Sign In Here</string>
+    <string name="advanced_search">Advanced Search</string>
+    <string name="enter_an_address_or_city">Enter an address or city</string>
+    <string name="enter_price_range">Enter price range</string>
+    <string name="resident_type">Resident Type</string>
+    <string name="search_now">Search Now</string>
+    <string name="locations">Locations</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="settings">Settings</string>
+    <string name="account">Account</string>
 </resources>

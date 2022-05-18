@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="onClicked"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never"
+        tools:context=".authentication.SignUpActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/bottom_radius"
+                android:backgroundTint="@color/primary_color"
+                app:layout_constraintDimensionRatio="1:0.6"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/imageLogo"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:gravity="bottom|center"
+                android:orientation="vertical"
+                app:layout_constraintDimensionRatio="1:0.35"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <include layout="@layout/layout_logo" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/details_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_30ssp"
+                android:layout_marginTop="@dimen/_30ssp"
+                android:outlineSpotShadowColor="@color/black"
+                app:cardCornerRadius="@dimen/_15ssp"
+                app:layout_constraintTop_toBottomOf="@id/imageLogo"
+                tools:targetApi="p">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/lbl_screen_title"
+                        style="@style/Heading3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_15ssp"
+                        android:gravity="center"
+                        android:text="@string/create_an_account"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_full_name"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_25ssp"
+                        android:layout_marginTop="@dimen/_18ssp"
+                        android:hint="@string/full_name"
+                        app:layout_constraintTop_toBottomOf="@id/lbl_screen_title">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edt_full_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_email"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10ssp"
+                        android:hint="@string/email_address"
+                        app:layout_constraintEnd_toEndOf="@id/til_full_name"
+                        app:layout_constraintStart_toStartOf="@id/til_full_name"
+                        app:layout_constraintTop_toBottomOf="@id/til_full_name">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edt_email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_password"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10ssp"
+                        android:hint="@string/password"
+                        app:endIconMode="password_toggle"
+                        app:layout_constraintEnd_toEndOf="@id/til_full_name"
+                        app:layout_constraintStart_toStartOf="@id/til_full_name"
+                        app:layout_constraintTop_toBottomOf="@id/til_email">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edt_password"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPassword" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_confirm_password"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10ssp"
+                        android:hint="@string/password"
+                        app:endIconMode="password_toggle"
+                        app:layout_constraintEnd_toEndOf="@id/til_full_name"
+                        app:layout_constraintStart_toStartOf="@id/til_full_name"
+                        app:layout_constraintTop_toBottomOf="@id/til_password">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edt_confirm_password"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPassword" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btn_create_account"
+                        style="@style/PrimaryButton"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_48sdp"
+                        android:layout_marginTop="@dimen/_10ssp"
+                        android:layout_marginBottom="@dimen/_15ssp"
+                        android:onClick="@{onClicked.onClick}"
+                        android:text="@string/create_account"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@id/til_full_name"
+                        app:layout_constraintStart_toStartOf="@id/til_full_name"
+                        app:layout_constraintTop_toBottomOf="@id/til_confirm_password" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/lbl_signup_option"
+                style="@style/B1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20ssp"
+                android:gravity="center"
+                android:text="@string/or_sign_up_with"
+                app:layout_constraintTop_toBottomOf="@id/details_layout" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_facebook_login"
+                style="@style/SecondaryButton"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_48sdp"
+                android:layout_marginHorizontal="@dimen/_50ssp"
+                android:layout_marginTop="@dimen/_15ssp"
+                android:drawableStart="@drawable/ic_facebook"
+                android:onClick="@{onClicked.onClick}"
+                android:paddingHorizontal="@dimen/_25ssp"
+                android:text="@string/continue_with_facebook"
+                app:layout_constraintTop_toBottomOf="@id/lbl_signup_option"
+                tools:layout_editor_absoluteX="65dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_google_login"
+                style="@style/SecondaryButton"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_48sdp"
+                android:layout_marginHorizontal="@dimen/_50ssp"
+                android:layout_marginTop="@dimen/_10ssp"
+                android:drawableStart="@drawable/ic_google"
+                android:onClick="@{onClicked.onClick}"
+                android:paddingHorizontal="@dimen/_30ssp"
+                android:text="@string/continue_with_google"
+                app:layout_constraintTop_toBottomOf="@id/btn_facebook_login" />
+
+            <TextView
+                android:id="@+id/lbl_signin"
+                style="@style/B1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10ssp"
+                android:layout_marginBottom="@dimen/_20ssp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:gravity="center"
+                android:onClick="@{onClicked.onClick}"
+                android:text="@string/have_an_account_sign_in_here"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btn_google_login"
+                tools:targetApi="m" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</layout>
