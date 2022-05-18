@@ -10,10 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RoomFinder">
         <activity
-            android:name=".authentication.LoginScreen"
+            android:name=".SearchActivity"
             android:exported="false" />
         <activity
-            android:name=".Splash"
+            android:name=".authentication.SignUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DescriptionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".authentication.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
