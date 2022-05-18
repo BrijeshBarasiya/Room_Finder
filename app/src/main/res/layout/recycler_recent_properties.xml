@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="@dimen/_5ssp"
+    android:outlineSpotShadowColor="@color/black"
+    app:cardCornerRadius="@dimen/_10ssp"
+    tools:targetApi="p">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_10ssp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/property_image"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintWidth_percent="0.25"
+            app:layout_constraintDimensionRatio="1"
+            android:src="@drawable/image"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/lbl_property_name"
+            style="@style/B1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_15ssp"
+            android:layout_marginStart="@dimen/_12ssp"
+            android:text="@string/app_name"
+            android:autoSizeTextType="uniform"
+            app:layout_constraintEnd_toStartOf="@id/lbl_status"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/property_image"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:targetApi="o" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/lbl_status"
+            style="@style/B2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_available"
+            android:drawablePadding="@dimen/_5ssp"
+            app:layout_constraintBottom_toBottomOf="@id/lbl_property_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/lbl_property_name" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/lbl_property_price"
+            style="@style/B1"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="@dimen/_3ssp"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textColor="@color/primary_color"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/lbl_property_name"
+            app:layout_constraintTop_toBottomOf="@id/lbl_property_name" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/lbl_per_month"
+            style="@style/B2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_3ssp"
+            android:text="@string/per_month"
+            android:textColor="@color/primary_color"
+            app:layout_constraintBottom_toBottomOf="@id/lbl_property_price"
+            app:layout_constraintStart_toEndOf="@id/lbl_property_price"
+            app:layout_constraintTop_toTopOf="@id/lbl_property_price" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/lbl_property_location"
+            style="@style/B2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_location"
+            android:drawablePadding="@dimen/_5ssp"
+            android:text="@string/per_month"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/lbl_property_price" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
