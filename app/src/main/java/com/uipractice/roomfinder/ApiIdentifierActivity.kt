@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.uipractice.roomfinder.authentication.LoginActivity
+import com.uipractice.roomfinder.authentication.view.LoginActivity
 import com.uipractice.roomfinder.databinding.ActivityApiIdentifierBinding
 import com.uipractice.roomfinder.webServices.ApiIdentity
 import com.uipractice.roomfinder.webServices.IdentifyApiCall
@@ -36,4 +36,5 @@ class ApiIdentifierActivity : AppCompatActivity(), View.OnClickListener {
             startActivity(this)
         }
     }
+
 }

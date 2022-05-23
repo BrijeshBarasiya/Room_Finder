@@ -1,4 +1,4 @@
-package com.uipractice.roomfinder.authentication
+package com.uipractice.roomfinder.authentication.model
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -21,4 +21,5 @@ open class BaseViewModel: ViewModel() {
     fun setFailureMessage(message: String) {
         _failureMessage.value = message
     }
+
 }

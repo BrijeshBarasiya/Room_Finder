@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import com.uipractice.roomfinder.databinding.ActivityDescriptionBinding
 
@@ -23,10 +22,6 @@ class DescriptionActivity : AppCompatActivity(), View.OnClickListener {
         supportActionBar?.hide()
         binding.onClicked = this
         loadData()
-//        window.statusBarColor = ContextCompat.getColor(this, R.color.s)
-//        window.setFlags(
-//            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-//            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
     }
 
     // Function

@@ -1,4 +1,4 @@
-package com.uipractice.roomfinder.webServices
+package com.uipractice.roomfinder.authentication.model
 
 data class ErrorMessage(
     val error: String
@@ -13,7 +13,7 @@ data class LoginSuccessful(
     val token: String
 )
 
-data class RegisterBody(
+data class AuthenticationParameters(
     val email: String,
     val password: String
 )

@@ -1,4 +1,4 @@
-package com.uipractice.roomfinder.authentication
+package com.uipractice.roomfinder.authentication.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,25 +7,19 @@ import android.text.TextUtils
 import android.text.method.LinkMovementMethod
 import android.util.Patterns
 import android.view.View
-import android.view.View.OnFocusChangeListener
-import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import com.uipractice.roomfinder.BaseActivity
 import com.uipractice.roomfinder.HomeActivity
 import com.uipractice.roomfinder.R
+import com.uipractice.roomfinder.authentication.viewmodel.SignUpViewModel
 import com.uipractice.roomfinder.boldSpan
 import com.uipractice.roomfinder.clickableForegroundColorSpan
 import com.uipractice.roomfinder.createToast
 import com.uipractice.roomfinder.databinding.ActivityLoginBinding
-import com.uipractice.roomfinder.webServices.ApiIdentity
 import com.uipractice.roomfinder.webServices.IdentifyApiCall
 import com.uipractice.roomfinder.webServices.apiIdentifier
-import org.json.JSONObject
 
-class LoginActivity : AppCompatActivity(), View.OnClickListener {
-
-    private lateinit var binding: ActivityLoginBinding
-    private val viewModel: SignUpViewModel by viewModels()
+class LoginActivity : BaseActivity<ActivityLoginBinding, SignUpViewModel>(ActivityLoginBinding::inflate, SignUpViewModel()) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,17 +29,11 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         supportActionBar?.hide()
         loadData()
         binding.onClicked = this
-        binding.edtEmail.onFocusChangeListener = OnFocusChangeListener { _, hasFocus ->
-            if (!hasFocus) {
-                if(Patterns.EMAIL_ADDRESS.matcher(binding.edtEmail.text.toString()).matches()) {
-                    binding.edtEmail.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_verified, 0)
-                    binding.lblEmailError.visibility = View.INVISIBLE
-                } else {
-                    binding.edtEmail.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_error, 0)
-                    binding.lblEmailError.visibility = View.VISIBLE
-                }
-            }
-        }
+        observers()
+        otherEvents()
+    }
+
+    private fun observers() {
         viewModel.checkUser.observe(this) {
             it.token.createToast(this)
             Intent(this, HomeActivity::class.java).apply {
@@ -57,6 +45,30 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         }
         viewModel.isLoading.observe(this) {
             binding.progressBar.isVisible = it
+        }
+    }
+
+    private fun otherEvents() {
+        binding.edtEmail.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
+            if (!hasFocus) {
+                if (Patterns.EMAIL_ADDRESS.matcher(binding.edtEmail.text.toString()).matches()) {
+                    binding.edtEmail.setCompoundDrawablesWithIntrinsicBounds(
+                        0,
+                        0,
+                        R.drawable.ic_verified,
+                        0
+                    )
+                    binding.lblEmailError.visibility = View.INVISIBLE
+                } else {
+                    binding.edtEmail.setCompoundDrawablesWithIntrinsicBounds(
+                        0,
+                        0,
+                        R.drawable.ic_error,
+                        0
+                    )
+                    binding.lblEmailError.visibility = View.VISIBLE
+                }
+            }
         }
     }
 

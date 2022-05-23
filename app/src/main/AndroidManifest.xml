@@ -24,14 +24,14 @@
             android:name=".SearchActivity"
             android:exported="false" />
         <activity
-            android:name=".authentication.SignUpActivity"
+            android:name=".authentication.view.SignUpActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".DescriptionActivity"
             android:exported="false" />
         <activity
-            android:name=".authentication.LoginActivity"
+            android:name=".authentication.view.LoginActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity

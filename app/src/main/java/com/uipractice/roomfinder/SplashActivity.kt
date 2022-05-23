@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
-import com.uipractice.roomfinder.authentication.LoginActivity
 import com.uipractice.roomfinder.databinding.ActivitySplashBinding
 
 class SplashActivity : AppCompatActivity() {

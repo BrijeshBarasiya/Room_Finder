@@ -1,4 +1,4 @@
-package com.uipractice.roomfinder.authentication
+package com.uipractice.roomfinder.authentication.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,16 +11,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.uipractice.roomfinder.HomeActivity
 import com.uipractice.roomfinder.R
+import com.uipractice.roomfinder.authentication.viewmodel.SignUpViewModel
 import com.uipractice.roomfinder.boldSpan
 import com.uipractice.roomfinder.clickableForegroundColorSpan
 import com.uipractice.roomfinder.createToast
 import com.uipractice.roomfinder.databinding.ActivitySignUpBinding
 import com.uipractice.roomfinder.isError
 import com.uipractice.roomfinder.isValidPassword
-import com.uipractice.roomfinder.webServices.ApiIdentity
 import com.uipractice.roomfinder.webServices.IdentifyApiCall
 import com.uipractice.roomfinder.webServices.apiIdentifier
-import org.json.JSONObject
 
 class SignUpActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -37,6 +36,10 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
         loadData()
         binding.onClicked = this
         supportActionBar?.hide()
+        observers()
+    }
+
+    private fun observers() {
         viewModel.createUser.observe(this) {
             it.token.createToast(this)
             Intent(this, HomeActivity::class.java).apply {

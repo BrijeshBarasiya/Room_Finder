@@ -1,6 +1,10 @@
 package com.uipractice.roomfinder.webServices
 
 import com.google.gson.Gson
+import com.uipractice.roomfinder.authentication.model.AuthenticationParameters
+import com.uipractice.roomfinder.authentication.model.ErrorMessage
+import com.uipractice.roomfinder.authentication.model.LoginSuccessful
+import com.uipractice.roomfinder.authentication.model.RegisterSuccessful
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -28,16 +32,16 @@ enum class APIs(val url: URL, val responseCode: Int, val requestMethod: String) 
 
 interface RoomFinderApiService {
     fun createUser(parameters: JSONObject, responder: Responder<RegisterSuccessful, ErrorMessage>)
-    fun createUserRetrofit(parameters: RegisterBody, responder: Responder<RegisterSuccessful, ErrorMessage>)
+    fun createUserRetrofit(parameters: AuthenticationParameters, responder: Responder<RegisterSuccessful, ErrorMessage>)
     fun checkUser(parameters: JSONObject, responder: Responder<LoginSuccessful, ErrorMessage>)
-    fun checkUserRetrofit(parameters: RegisterBody, responder: Responder<LoginSuccessful, ErrorMessage>)
+    fun checkUserRetrofit(parameters: AuthenticationParameters, responder: Responder<LoginSuccessful, ErrorMessage>)
 }
 
 interface RoomFinderRetrofitApiServices{
     @POST("register")
-    fun createUser(@Body parameters: RegisterBody): Call<RegisterSuccessful>
+    fun createUser(@Body parameters: AuthenticationParameters): Call<RegisterSuccessful>
     @POST("login")
-    fun checkUser(@Body parameters: RegisterBody): Call<LoginSuccessful>
+    fun checkUser(@Body parameters: AuthenticationParameters): Call<LoginSuccessful>
 }
 
 interface Responder<T, U> {
@@ -121,7 +125,7 @@ class RoomFinderApiServiceImpl: RoomFinderApiService {
         request(RegisterSuccessful::class.java, ErrorMessage::class.java, APIs.SignUpAPI, parameters, responder)
     }
 
-    override fun createUserRetrofit(parameters: RegisterBody, responder: Responder<RegisterSuccessful, ErrorMessage>) {
+    override fun createUserRetrofit(parameters: AuthenticationParameters, responder: Responder<RegisterSuccessful, ErrorMessage>) {
         val builder = retrofitBuilder.createUser(parameters)
         retrofitRequest(builder, ErrorMessage::class.java, 200, responder)
     }
@@ -130,7 +134,7 @@ class RoomFinderApiServiceImpl: RoomFinderApiService {
         request(LoginSuccessful::class.java, ErrorMessage::class.java, APIs.SignInAPI, parameters, responder)
     }
 
-    override fun checkUserRetrofit(parameters: RegisterBody, responder: Responder<LoginSuccessful, ErrorMessage>) {
+    override fun checkUserRetrofit(parameters: AuthenticationParameters, responder: Responder<LoginSuccessful, ErrorMessage>) {
         val builder = retrofitBuilder.checkUser(parameters)
         retrofitRequest(builder, ErrorMessage::class.java, 200, responder)
     }
