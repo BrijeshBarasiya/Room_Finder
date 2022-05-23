@@ -13,7 +13,7 @@ data class LoginSuccessful(
     val token: String
 )
 
-data class ObserverValue(
-    val isSuccess: Boolean,
-    val message: String
+data class RegisterBody(
+    val email: String,
+    val password: String
 )

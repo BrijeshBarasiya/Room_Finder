@@ -17,6 +17,9 @@ import com.uipractice.roomfinder.boldSpan
 import com.uipractice.roomfinder.clickableForegroundColorSpan
 import com.uipractice.roomfinder.createToast
 import com.uipractice.roomfinder.databinding.ActivityLoginBinding
+import com.uipractice.roomfinder.webServices.ApiIdentity
+import com.uipractice.roomfinder.webServices.IdentifyApiCall
+import com.uipractice.roomfinder.webServices.apiIdentifier
 import org.json.JSONObject
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
@@ -43,15 +46,14 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
         }
-        viewModel.createUserObserver.observe(this) {
-            if (it.isSuccess) {
-                it.message.createToast(this)
-                Intent(this, HomeActivity::class.java).apply {
-                    startActivity(this)
-                }
-            } else {
-                it.message.createToast(this)
+        viewModel.checkUser.observe(this) {
+            it.token.createToast(this)
+            Intent(this, HomeActivity::class.java).apply {
+                startActivity(this)
             }
+        }
+        viewModel.failureMessage.observe(this) {
+            it.createToast(this)
         }
         viewModel.isLoading.observe(this) {
             binding.progressBar.isVisible = it
@@ -74,10 +76,10 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(view: View) {
         when(view.id) {
             binding.btnSignIn.id -> {
-                val body = JSONObject()
-                body.put("email", binding.edtEmail.text.toString())
-                body.put("password", binding.edtPassword.text.toString())
-                viewModel.checkUser(body)
+                when (apiIdentifier) {
+                    IdentifyApiCall.UsingHttp -> viewModel.checkUser(binding.edtEmail.text.toString(), binding.edtPassword.text.toString())
+                    IdentifyApiCall.UsingRetrofit -> viewModel.checkUserRetrofit(binding.edtEmail.text.toString(), binding.edtPassword.text.toString())
+                }
             }
             binding.btnGoogleLogin.id -> resources.getString(R.string.continue_with_google).createToast(this)
             binding.btnFacebookLogin.id -> resources.getString(R.string.continue_with_facebook).createToast(this)

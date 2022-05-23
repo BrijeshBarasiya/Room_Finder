@@ -44,4 +44,6 @@
     <string name="recent_updates">Recent Updates</string>
     <string name="email_did_t_match">Enter Valid Email!</string>
     <string name="confirm_password">Confirm Password</string>
+    <string name="using_retrofit">Using Retrofit</string>
+    <string name="using_http">Using HTTP</string>
 </resources>
