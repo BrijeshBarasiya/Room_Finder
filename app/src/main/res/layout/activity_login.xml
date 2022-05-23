@@ -58,6 +58,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
+                    <ProgressBar
+                        android:id="@+id/progress_bar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/lbl_screen_title"
                         style="@style/Heading3"
@@ -82,6 +91,7 @@
                             android:id="@+id/edt_email"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:text="eve.holt@reqres.in"
                             android:inputType="text" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -113,6 +123,7 @@
                             android:id="@+id/edt_password"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:text="cityslicka"
                             android:inputType="textPassword" />
 
                     </com.google.android.material.textfield.TextInputLayout>

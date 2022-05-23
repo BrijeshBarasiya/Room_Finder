@@ -8,17 +8,21 @@ import android.text.method.LinkMovementMethod
 import android.util.Patterns
 import android.view.View
 import android.view.View.OnFocusChangeListener
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.uipractice.roomfinder.HomeActivity
 import com.uipractice.roomfinder.R
 import com.uipractice.roomfinder.boldSpan
 import com.uipractice.roomfinder.clickableForegroundColorSpan
 import com.uipractice.roomfinder.createToast
 import com.uipractice.roomfinder.databinding.ActivityLoginBinding
+import org.json.JSONObject
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityLoginBinding
+    private val viewModel: SignUpViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +43,19 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
         }
+        viewModel.createUserObserver.observe(this) {
+            if (it.isSuccess) {
+                it.message.createToast(this)
+                Intent(this, HomeActivity::class.java).apply {
+                    startActivity(this)
+                }
+            } else {
+                it.message.createToast(this)
+            }
+        }
+        viewModel.isLoading.observe(this) {
+            binding.progressBar.isVisible = it
+        }
     }
 
     private fun loadData() {
@@ -57,9 +74,10 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(view: View) {
         when(view.id) {
             binding.btnSignIn.id -> {
-                Intent(this, HomeActivity::class.java).apply {
-                    startActivity(this)
-                }
+                val body = JSONObject()
+                body.put("email", binding.edtEmail.text.toString())
+                body.put("password", binding.edtPassword.text.toString())
+                viewModel.checkUser(body)
             }
             binding.btnGoogleLogin.id -> resources.getString(R.string.continue_with_google).createToast(this)
             binding.btnFacebookLogin.id -> resources.getString(R.string.continue_with_facebook).createToast(this)

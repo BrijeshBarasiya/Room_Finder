@@ -58,6 +58,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
+                    <ProgressBar
+                        android:id="@+id/progress_bar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/lbl_screen_title"
                         style="@style/Heading3"
@@ -83,6 +92,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:autofillHints="name"
+                            android:text="BRIJESH"
                             android:inputType="textCapWords"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -115,6 +125,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="textEmailAddress"
+                            android:text="eve.holt@reqres.in"
                             android:autofillHints="emailAddress"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -147,6 +158,7 @@
                             android:id="@+id/edt_password"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:text="pistol123"
                             android:inputType="textPassword" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -179,6 +191,7 @@
                             android:id="@+id/edt_confirm_password"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:text="pistol123"
                             android:inputType="textPassword" />
 
                     </com.google.android.material.textfield.TextInputLayout>

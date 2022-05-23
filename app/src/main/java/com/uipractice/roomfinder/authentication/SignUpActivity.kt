@@ -1,15 +1,14 @@
 package com.uipractice.roomfinder.authentication
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.TextUtils
 import android.text.method.LinkMovementMethod
-import android.util.Patterns
 import android.view.View
-import android.widget.EditText
-import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.uipractice.roomfinder.R
 import com.uipractice.roomfinder.boldSpan
 import com.uipractice.roomfinder.clickableForegroundColorSpan
@@ -35,7 +34,17 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
         binding.onClicked = this
         supportActionBar?.hide()
         viewModel.createUserObserver.observe(this) {
-            it.toString().createToast(this)
+            if (it.isSuccess) {
+                it.message.createToast(this)
+                Intent(this, LoginActivity::class.java).apply {
+                    startActivity(this)
+                }
+            } else {
+                it.message.createToast(this)
+            }
+        }
+        viewModel.isLoading.observe(this) {
+            binding.progressBar.isVisible = it
         }
     }
 
@@ -61,8 +70,8 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
                     if (edtFullName.isError(lblErrorFullName) && edtEmail.isError(lblErrorEmail) && edtPassword.isValidPassword(lblErrorPassword)) {
                         if (edtPassword.text.toString() == edtConfirmPassword.text.toString()) {
                             val body = JSONObject()
-                            body.put("name",edtEmail.text.toString())
-                            body.put("job",edtPassword.text.toString())
+                            body.put("email",edtEmail.text.toString())
+                            body.put("password",edtPassword.text.toString())
                             viewModel.createUser(body)
                         } else {
                             resources.getString(R.string.password_does_not_match).createToast(this@SignUpActivity)

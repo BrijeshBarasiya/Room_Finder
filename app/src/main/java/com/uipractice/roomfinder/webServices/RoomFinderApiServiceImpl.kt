@@ -11,18 +11,19 @@ import java.io.OutputStreamWriter
 import java.net.HttpURLConnection
 import java.net.URL
 
-
 enum class APIs(val url: URL, val responseCode: Int, val requestMethod: String) {
-    SignUpAPI(URL("${BaseURL}users"), 201, "POST"),
+    SignUpAPI(URL("${BaseURL}register"), 200, "POST"),
+    SignInAPI(URL("${BaseURL}login"), 200, "POST")
 }
 
 interface RoomFinderApiService {
-    fun createUser(parameters: JSONObject, responder: Responder<CreateUserValues, ErrorMessage>)
+    fun createUser(parameters: JSONObject, responder: Responder<RegisterSuccessful, ErrorMessage>)
+    fun checkUser(parameters: JSONObject, responder: Responder<LoginSuccessful, ErrorMessage>)
 }
 
 interface Responder<T, U> {
     fun onSuccess(result: T)
-    fun onFailure(error: U)
+    fun onFailure(error: U, responseCode: Int)
 }
 
 class RoomFinderApiServiceImpl: RoomFinderApiService {
@@ -45,19 +46,10 @@ class RoomFinderApiServiceImpl: RoomFinderApiService {
                         }
                     }
                 } else {
-                    CoroutineScope(Dispatchers.Main).launch {
-                        when (responseCode) {
-                            //204 -> responder.onFailure("Data Not Found!")
-                            //404 -> responder.onFailure("Response Code: $responseCode and Message: $responseMessage")
-                            400 -> {
-                                BufferedReader(InputStreamReader(inputStream)).use { responseData ->
-                                    val result = Gson().fromJson(responseData.readText(), errorClass)
-                                    CoroutineScope(Dispatchers.Main).launch {
-                                        responder.onFailure(result)
-                                    }
-                                }
-                            }
-                            //else -> responder.onFailure("Response Code: $responseCode and Message: $responseMessage")
+                    BufferedReader(InputStreamReader(errorStream)).use { responseData ->
+                        val result = Gson().fromJson(responseData.readText(), errorClass)
+                        CoroutineScope(Dispatchers.Main).launch {
+                            responder.onFailure(result, responseCode)
                         }
                     }
                 }
@@ -65,8 +57,12 @@ class RoomFinderApiServiceImpl: RoomFinderApiService {
         }
     }
 
-    override fun createUser(parameters: JSONObject, responder: Responder<CreateUserValues, ErrorMessage>) {
-        request(CreateUserValues::class.java, ErrorMessage::class.java, APIs.SignUpAPI, parameters, responder)
+    override fun createUser(parameters: JSONObject, responder: Responder<RegisterSuccessful, ErrorMessage>) {
+        request(RegisterSuccessful::class.java, ErrorMessage::class.java, APIs.SignUpAPI, parameters, responder)
+    }
+
+    override fun checkUser(parameters: JSONObject, responder: Responder<LoginSuccessful, ErrorMessage>) {
+        request(LoginSuccessful::class.java, ErrorMessage::class.java, APIs.SignInAPI, parameters, responder)
     }
 
 }

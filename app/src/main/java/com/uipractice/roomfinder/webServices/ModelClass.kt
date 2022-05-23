@@ -4,13 +4,16 @@ data class ErrorMessage(
     val error: String
 )
 
-data class CreateUserValues(
+data class RegisterSuccessful(
     val id: String,
-    val name: String,
-    val job: String,
-    val createdAt: String
+    val token: String,
 )
 
-data class TokenMessage(
+data class LoginSuccessful(
     val token: String
+)
+
+data class ObserverValue(
+    val isSuccess: Boolean,
+    val message: String
 )
