@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Room Finder</string>
     <string name="app_slogan">Ultimate Property Finder</string>
+    <string name="book_now">Book Now</string>
+    <string name="per_month">per month</string>
+    <string name="view_on_google_maps">View on Google Maps</string>
+    <string name="facilities">Facilities</string>
+    <string name="description">Description</string>
 </resources>
