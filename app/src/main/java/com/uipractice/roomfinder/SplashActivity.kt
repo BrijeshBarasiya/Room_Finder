@@ -5,10 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import com.uipractice.roomfinder.authentication.LoginScreen
+import com.uipractice.roomfinder.authentication.LoginActivity
 import com.uipractice.roomfinder.databinding.SplashScreenBinding
 
-class Splash : AppCompatActivity() {
+class SplashActivity : AppCompatActivity() {
 
     // Variable
     private lateinit var binding: SplashScreenBinding
@@ -21,7 +21,7 @@ class Splash : AppCompatActivity() {
         setContentView(view)
         supportActionBar?.hide()
         Handler(Looper.getMainLooper()).postDelayed({
-            Intent(this, LoginScreen::class.java).apply {
+            Intent(this, LoginActivity::class.java).apply {
                 startActivity(this)
             }
             finish()
