@@ -11,21 +11,21 @@ import androidx.core.view.isVisible
 import com.uipractice.roomfinder.BaseActivity
 import com.uipractice.roomfinder.HomeActivity
 import com.uipractice.roomfinder.R
+import com.uipractice.roomfinder.SharedPreference
 import com.uipractice.roomfinder.authentication.viewmodel.SignUpViewModel
 import com.uipractice.roomfinder.boldSpan
 import com.uipractice.roomfinder.clickableForegroundColorSpan
 import com.uipractice.roomfinder.createToast
 import com.uipractice.roomfinder.databinding.ActivityLoginBinding
 import com.uipractice.roomfinder.webServices.IdentifyApiCall
+import com.uipractice.roomfinder.webServices.TOKEN
 import com.uipractice.roomfinder.webServices.apiIdentifier
+import com.uipractice.roomfinder.webServices.isLOGIN
 
 class LoginActivity : BaseActivity<ActivityLoginBinding, SignUpViewModel>(ActivityLoginBinding::inflate, SignUpViewModel()) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityLoginBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
         supportActionBar?.hide()
         loadData()
         binding.onClicked = this
@@ -37,6 +37,8 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, SignUpViewModel>(Activi
         viewModel.checkUser.observe(this) {
             it.token.createToast(this)
             Intent(this, HomeActivity::class.java).apply {
+                SharedPreference.addSharedPreference(this@LoginActivity, isLOGIN, true)
+                SharedPreference.addSharedPreference(this@LoginActivity, TOKEN, it.token)
                 startActivity(this)
             }
         }
@@ -52,20 +54,10 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, SignUpViewModel>(Activi
         binding.edtEmail.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
             if (!hasFocus) {
                 if (Patterns.EMAIL_ADDRESS.matcher(binding.edtEmail.text.toString()).matches()) {
-                    binding.edtEmail.setCompoundDrawablesWithIntrinsicBounds(
-                        0,
-                        0,
-                        R.drawable.ic_verified,
-                        0
-                    )
+                    binding.edtEmail.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_verified, 0)
                     binding.lblEmailError.visibility = View.INVISIBLE
                 } else {
-                    binding.edtEmail.setCompoundDrawablesWithIntrinsicBounds(
-                        0,
-                        0,
-                        R.drawable.ic_error,
-                        0
-                    )
+                    binding.edtEmail.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_error, 0)
                     binding.lblEmailError.visibility = View.VISIBLE
                 }
             }

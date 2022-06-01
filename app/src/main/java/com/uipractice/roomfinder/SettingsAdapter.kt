@@ -1,6 +1,7 @@
 package com.uipractice.roomfinder
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
@@ -33,11 +34,18 @@ class SettingsAdapter(
                 layoutSingleCell.backgroundTintList = ContextCompat.getColorStateList(context, R.color.white)
             }
             holder.itemView.setOnClickListener {
-                for (index in elements.indices) {
-                    elements[index].isExpanded = false
+                if (position == elements.size-1) {
+                    SharedPreference.removeAllSharedPreference(context)
+                    Intent(context, ApiIdentifierActivity::class.java).apply {
+                        context.startActivity(this)
+                    }
+                } else {
+                    for (index in elements.indices) {
+                        elements[index].isExpanded = false
+                    }
+                    element.isExpanded = true
+                    notifyDataSetChanged()
                 }
-                element.isExpanded = true
-                notifyDataSetChanged()
             }
         }
     }

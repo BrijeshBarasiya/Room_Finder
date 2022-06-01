@@ -6,6 +6,7 @@ import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import com.uipractice.roomfinder.databinding.ActivitySplashBinding
+import com.uipractice.roomfinder.webServices.isLOGIN
 
 class SplashActivity : AppCompatActivity() {
 
@@ -19,9 +20,14 @@ class SplashActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
         supportActionBar?.hide()
+        val isLogin = SharedPreference.getSharedPreference(this, isLOGIN, false).toString().toBoolean()
         Handler(Looper.getMainLooper()).postDelayed({
-            Intent(this, ApiIdentifierActivity::class.java).apply {
-                startActivity(this)
+            if (isLogin) {
+                startActivity(Intent(this, HomeActivity::class.java))
+            } else {
+                Intent(this, ApiIdentifierActivity::class.java).apply {
+                    startActivity(this)
+                }
             }
             finish()
         }, 2000)

@@ -6,9 +6,8 @@ import android.text.SpannableString
 import android.text.TextUtils
 import android.text.method.LinkMovementMethod
 import android.view.View
-import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import com.uipractice.roomfinder.BaseActivity
 import com.uipractice.roomfinder.HomeActivity
 import com.uipractice.roomfinder.R
 import com.uipractice.roomfinder.authentication.viewmodel.SignUpViewModel
@@ -21,18 +20,11 @@ import com.uipractice.roomfinder.isValidPassword
 import com.uipractice.roomfinder.webServices.IdentifyApiCall
 import com.uipractice.roomfinder.webServices.apiIdentifier
 
-class SignUpActivity : AppCompatActivity(), View.OnClickListener {
-
-    // Variables
-    private lateinit var binding: ActivitySignUpBinding
-    private val viewModel: SignUpViewModel by viewModels()
+class SignUpActivity : BaseActivity<ActivitySignUpBinding, SignUpViewModel>(ActivitySignUpBinding::inflate, SignUpViewModel()) {
 
     // Override Function
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySignUpBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
         loadData()
         binding.onClicked = this
         supportActionBar?.hide()
