@@ -46,4 +46,6 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="using_retrofit">Using Retrofit</string>
     <string name="using_http">Using HTTP</string>
+    <string name="push_local_notification">Push Local Notification</string>
+    <string name="push_notification">Push Notification</string>
 </resources>
